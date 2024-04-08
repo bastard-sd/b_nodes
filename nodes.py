@@ -390,7 +390,7 @@ class BastardSaveImageAndText:
             if len(images) > 1:
                 file = f"{file_basename}{delimiter}{batch_number:02}{image_extension}"
             else:
-                file = f"{file_basename}{delimiter}{image_extension}"
+                file = f"{file_basename}{image_extension}"
             img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=self.compress_level)
             results.append({
                 "filename": file,
