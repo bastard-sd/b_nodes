@@ -387,8 +387,10 @@ class BastardSaveImageAndText:
                 if extra_pnginfo is not None:
                     for x in extra_pnginfo:
                         metadata.add_text(x, json.dumps(extra_pnginfo[x]))
-
-            file = f"{file_basename}{delimiter}{counter:02}{image_extension}"
+            if len(images) > 1:
+                file = f"{file_basename}{delimiter}{batch_number:02}{image_extension}"
+            else:
+                file = f"{file_basename}{delimiter}{image_extension}"
             img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=self.compress_level)
             results.append({
                 "filename": file,
